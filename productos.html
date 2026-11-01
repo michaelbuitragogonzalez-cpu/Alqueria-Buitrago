@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Catálogo | ALQUERÍA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="encabezado">
+    <a href="index.html"><img src="img/logo.svg" alt="Alquería, volver al inicio"></a>
+    <button class="btn-carrito" id="abrirCarrito" aria-label="Abrir carrito">
+      Carrito <span id="contador">0</span>
+    </button>
+  </header>
+
+  <section class="titulo">
+    <h2>Catálogo de productos</h2>
+    <p>Elige tus productos y agrégalos al carrito.</p>
+  </section>
+
+  <section class="grid" id="catalogo" aria-label="Productos"></section>
+
+  <div class="fondo" id="fondo"></div>
+  <aside class="carrito" id="carrito" aria-label="Carrito de compras">
+    <header>
+      <h2>Tu pedido</h2>
+      <button class="cerrar" id="cerrarCarrito" aria-label="Cerrar carrito">&times;</button>
+    </header>
+    <div class="lista" id="lista"></div>
+    <div class="pie">
+      <div class="total"><span>TOTAL DEL PEDIDO</span><span id="total">$0</span></div>
+      <button class="btn btn-primario" id="finalizar">FINALIZAR PEDIDO</button>
+      <button class="btn btn-borde" id="vaciar">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <dialog id="resumen">
+    <div class="enc"><h2>Resumen de tu pedido</h2></div>
+    <div class="cont">
+      <div class="tabla-wrap">
+        <table>
+          <thead><tr><th>Producto</th><th>Cant.</th><th>Precio</th><th>Subtotal</th></tr></thead>
+          <tbody id="filas"></tbody>
+        </table>
+      </div>
+      <div class="total"><span>TOTAL GENERAL</span><span id="totalResumen"></span></div>
+      <p class="aviso" id="avisoWa" hidden></p>
+      <div class="acciones">
+        <button class="btn btn-primario" id="descargarFactura">Descargar factura (imagen)</button>
+        <button class="btn btn-whatsapp" id="whatsapp">Enviar pedido por WhatsApp</button>
+        <button class="btn btn-borde" id="cerrarResumen">Seguir editando</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="productos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
