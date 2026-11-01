@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Michael Buitrago 💝</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="bienvenida" id="hero">
+    <div>
+      <!-- Reemplaza img/logo.svg por el logotipo oficial de Alquería -->
+      <img class="logo" src="img/logo.svg" alt="Logotipo de Alquería">
+      <h1 id="titulo" aria-label="ALQUERÍA">ALQUERÍA</h1>
+      <p>Haz tu pedido sin complicaciones.</p>
+      <a class="btn btn-blanco" id="entrar" href="productos.html">ENTRAR AL CATÁLOGO</a>
+    </div>
+    <div class="arte" id="arte">
+      <div class="disco"><img src="img/alqueria.jpeg" alt="Cartón de leche entera"></div>
+    </div>
+    <div class="ola dos"></div>
+    <div class="ola"></div>
+  </main>
+
+  <script>
+    // Letras que entran una a una
+    const t = document.getElementById("titulo");
+    t.innerHTML = [...t.textContent].map((c, i) => `<span style="--i:${i}" aria-hidden="true">${c}</span>`).join("");
+
+    // Burbujas que suben
+    const hero = document.getElementById("hero");
+    for (let i = 0; i < 16; i++) {
+      const b = document.createElement("span");
+      const s = 10 + Math.random() * 40;
+      b.className = "burbuja";
+      b.style.cssText = `left:${Math.random() * 100}%;width:${s}px;height:${s}px;animation-duration:${7 + Math.random() * 8}s;animation-delay:${-Math.random() * 12}s`;
+      hero.appendChild(b);
+    }
+
+    // Movimiento suave de la imagen según el mouse
+    const arte = document.getElementById("arte");
+    hero.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / innerWidth - .5) * 26, y = (e.clientY / innerHeight - .5) * 26;
+      arte.style.transform = `translate(${x}px,${y}px)`;
+    });
+
+    // Transición suave al entrar al catálogo
+    const entrar = document.getElementById("entrar");
+    entrar.addEventListener("click", (e) => {
+      e.preventDefault();
+      const destino = entrar.href; // se guarda antes del retraso
+      document.body.classList.add("saliendo");
+      setTimeout(() => { location.href = destino; }, 400);
+    });
+    // Si el usuario regresa con el botón "atrás", la página vuelve a verse normal
+    addEventListener("pageshow", () => document.body.classList.remove("saliendo"));
+  </script>
+</body>
+</html>
